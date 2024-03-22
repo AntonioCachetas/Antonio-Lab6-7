@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: Antonio Lab
+
+
+#JPA
+  jpa:
+    show-sql: true
+
+#Spring Datasource Connection Pooling configuration
+  datasource:
+    username: root
+    password: fortnite1 # Remove it, if you are using XAMPP (Windows)
+    url: jdbc:mysql://localhost:3306/customer_portal
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    tomcat:
+      validation-query: SELECT 1
+      max-active: 5
+      max-idle: 3
+      max-wait: 8000
+
+#Flyway
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    url: jdbc:mysql://localhost:3306/customer_portal
+    schemas: customer_portal
+    user: root
+    password: fortnite1 # Remove it, if you are using XAMPP (Windows)
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

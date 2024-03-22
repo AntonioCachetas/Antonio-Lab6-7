@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Classroom SpringBoot App</title>
+    <style>
+        p {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<p th:text="${message}"></p>
+<ul th:each="number : ${numbers}">
+    <li th:text="${number}"></li>
+</ul>
+</body>
+
+</html>

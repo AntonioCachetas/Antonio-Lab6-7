@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country List</title>
+</head>
+<body>
+    <h1>Country List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Capital</th>
+                <th>Population</th>
+                <th>Area</th>
+            </tr>
+        </thead>
+        <tbody id="countryTableBody">
+        </tbody>
+    </table>
+
+    <script>
+        // Fetch data from Spring Boot API
+        fetch('http://localhost:8090/api/countries/all')
+            .then(response => response.json())
+            .then(data => {
+                const countryTableBody = document.getElementById('countryTableBody');
+                data.forEach(country => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${country.name}</td>
+                        <td>${country.capital}</td>
+                        <td>${country.population}</td>
+                        <td>${country.area} sq km</td>
+                    `;
+                    countryTableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
+
